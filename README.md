@@ -3,9 +3,16 @@ AiStata-Wiki知识库，主页网址为：https://github.com/Stata101/AiStata-Wi
 
 ---
 
+
 ## 📌 简介
 
+AI+Stata3.0 WIki 知识库网页一览
 
+[数据管理](https://stata101.github.io/AiStata-Wiki/concept-page-data-management.html)
+
+[描述分析](https://stata101.github.io/AiStata-Wiki/concept-page-descriptive-stats.html)
+
+[Stata基础概念](https://stata101.github.io/AiStata-Wiki/concept-page-stata-basics.html)
 
 
 
