@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>描述性统计 - AI+Stata3.0中文知识库</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">📚</div>
+            <span>AI+Stata3.0中文知识库</span>
+        </a>
+        <nav class="main-nav">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">首页</a>
+            </div>
+            <div class="nav-item">
+                <a href="concepts.html" class="nav-link active">概念词条</a>
+                <div class="dropdown-menu">
+                    <a href="concept-page-stata-basics.html" class="dropdown-item">Stata基础</a>
+                    <a href="concept-page-data-management.html" class="dropdown-item">数据管理</a>
+                    <a href="concept-page-descriptive-stats.html" class="dropdown-item">描述性统计</a>
+                    <a href="concept-page-linear-regression.html" class="dropdown-item">线性回归</a>
+                    <a href="concept-page-panel-data.html" class="dropdown-item">面板数据分析</a>
+                    <a href="concept-page-did.html" class="dropdown-item">双重差分法</a>
+                    <a href="concept-page-psm.html" class="dropdown-item">倾向得分匹配</a>
+                    <a href="concept-page-rdd.html" class="dropdown-item">断点回归设计</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="summaries.html" class="nav-link">专题总览</a>
+                <div class="dropdown-menu">
+                    <a href="summary-stata-intro.html" class="dropdown-item">Stata简介</a>
+                    <a href="summary-data-management.html" class="dropdown-item">数据管理</a>
+                    <a href="summary-descriptive-stats.html" class="dropdown-item">描述性统计</a>
+                    <a href="summary-linear-regression.html" class="dropdown-item">线性回归</a>
+                    <a href="summary-panel-data.html" class="dropdown-item">面板数据分析</a>
+                    <a href="summary-causal-inference.html" class="dropdown-item">因果推断方法</a>
+                    <a href="summary-programming.html" class="dropdown-item">Stata编程基础</a>
+                    <a href="summary-tables-reporting.html" class="dropdown-item">表格与报告</a>
+                    <a href="summary-machine-learning.html" class="dropdown-item">机器学习</a>
+                    <a href="summary-time-series.html" class="dropdown-item">时间序列分析</a>
+                    <a href="summary-spatial-analysis.html" class="dropdown-item">空间分析</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="raw.html" class="nav-link">原始文档</a>
+                <div class="dropdown-menu">
+                    <a href="raw-content-1-intro.html" class="dropdown-item">1-intro - Stata简介</a>
+                    <a href="raw-content-2-data.html" class="dropdown-item">2-data - 数据管理</a>
+                    <a href="raw-content-6-ols.html" class="dropdown-item">6-ols - 线性回归</a>
+                    <a href="raw-content-9-time.html" class="dropdown-item">9-time - 时间序列</a>
+                    <a href="raw-content-10-panel.html" class="dropdown-item">10-panel - 面板数据</a>
+                    <a href="raw-content-12-scm.html" class="dropdown-item">12-scm - 合成控制法</a>
+                    <a href="raw-content-13-psm.html" class="dropdown-item">13-psm - 倾向匹配得分</a>
+                    <a href="raw-content-16-rd.html" class="dropdown-item">16-rd - 断点回归</a>
+                    <a href="raw-content-17-did.html" class="dropdown-item">17-did - 双重差分</a>
+                    <a href="raw-content-18-sp.html" class="dropdown-item">18-sp - 空间分析</a>
+                    <a href="raw-content-29-ml.html" class="dropdown-item">29-ml - 机器学习</a>
+                    <a href="raw-content-3-prog.html" class="dropdown-item">3-prog - 编程基础</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="about.html" class="nav-link">关于</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>概念词条</h2>
+                <p>描述性统计</p>
+            </div>
+
+            <div class="sidebar-content">
+                <div class="nav-section">
+                    <h3>目录</h3>
+                    <ul>
+                        <li><a href="#overview">概述</a></li>
+                        <li><a href="#summary-stats">描述性统计指标</a></li>
+                        <li><a href="#frequency">频数分布</a></li>
+                        <li><a href="#cross-tab">交叉表</a></li>
+                        <li><a href="#graphical">图形展示</a></li>
+                        <li><a href="#best-practices">最佳实践</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>相关概念</h3>
+                    <ul>
+                        <li><a href="concept-page-stata-basics.html">Stata基础</a></li>
+                        <li><a href="concept-page-data-management.html">数据管理</a></li>
+                        <li><a href="summary-descriptive-stats.html">描述性统计专题</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>参考文档</h3>
+                    <ul>
+                        <li><a href="raw-content-2-data.html">2-data/descriptive-statistics</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <p>最后更新: 2026-04-13</p>
+                <p class="version">AI+Stata3.0 中文知识库</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="page">
+                <div class="page-header">
+                    <h1>描述性统计</h1>
+                    <div class="page-meta">
+                        <div class="page-meta-item">
+                            <span>🏷️</span>
+                            <span>统计分析 · 基础</span>
+                        </div>
+                        <div class="page-meta-item">
+                            <span>📖</span>
+                            <span>学习时间: 1天</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <section id="overview" class="section">
+                        <h2>概述</h2>
+                        <p>描述性统计是数据分析的基础，它通过图表和数值指标来总结数据的基本特征。</p>
+
+                        <div class="card">
+                            <h3>主要内容</h3>
+                            <ul>
+                                <li>数据的中心趋势</li>
+                                <li>数据的离散程度</li>
+                                <li>数据的分布形态</li>
+                                <li>变量间的关系</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="summary-stats" class="section">
+                        <h2>描述性统计指标</h2>
+
+                        <h3>基本统计量</h3>
+                        <pre><code>// 简单统计量
+summarize price weight length
+
+// 详细统计量
+summarize price, detail
+
+// 分组统计
+bysort foreign: summarize price
+
+//  egen 函数计算统计量
+bysort foreign: egen mean_price = mean(price)
+bysort foreign: egen median_price = median(price)
+bysort foreign: egen sd_price = sd(price)</code></pre>
+
+                        <h3>分位数</h3>
+                        <pre><code>// 计算分位数
+centile price, centile(25 50 75 90)
+
+// 绘制箱线图
+graph box price, over(foreign)
+
+// 计算偏度和峰度
+estat skewness
+estat kurtosis</code></pre>
+                    </section>
+
+                    <section id="frequency" class="section">
+                        <h2>频数分布</h2>
+
+                        <h3>频数表</h3>
+                        <pre><code>// 单变量频数分布
+tabulate foreign
+tabulate rep78
+tabulate foreign, missing
+
+// 分组频数表
+tabulate foreign rep78
+
+// 数值变量频数分布
+histogram price, bin(10) frequency
+histogram price, bin(20) density
+histogram price, bin(15) percent</code></pre>
+
+                        <h3>累计频率</h3>
+                        <pre><code>// 累计频率分布
+cumul price, generate(cumul_price)
+list price cumul_price in 1/5</code></pre>
+                    </section>
+
+                    <section id="cross-tab" class="section">
+                        <h2>交叉表</h2>
+
+                        <h3>二维交叉表</h3>
+                        <pre><code>// 基本交叉表
+tabulate foreign rep78
+
+// 带行百分比
+tabulate foreign rep78, row
+
+// 带列百分比和总数
+tabulate foreign rep78, column nofreq
+
+// 带卡方检验
+tabulate foreign rep78, chi2
+
+// 带Fisher精确检验
+tabulate foreign rep78, exact</code></pre>
+
+                        <h3>多维交叉表</h3>
+                        <pre><code>// 三维交叉表
+table foreign rep78, contents(freq mean price median price)
+
+// 带缺失值的交叉表
+tabulate foreign rep78, missing
+
+// 使用egen进行复杂统计
+egen avg_price = mean(price), by(foreign rep78)
+table foreign rep78, contents(freq avg_price)</code></pre>
+                    </section>
+
+                    <section id="graphical" class="section">
+                        <h2>图形展示</h2>
+
+                        <h3>直方图和密度图</h3>
+                        <pre><code>// 直方图
+histogram price, bin(15) frequency name(hist1)
+
+// 密度图
+kdensity price, generate(x y) nograph
+twoway line y x, name(kd1)
+
+// 同时绘制直方图和密度图
+histogram price, bin(15) fraction addplot(kdensity) name(combined1)</code></pre>
+
+                        <h3>散点图</h3>
+                        <pre><code>// 基本散点图
+scatter price weight, name(scatter1)
+
+// 带拟合线的散点图
+twoway scatter price weight || lfit price weight, name(fit1)
+
+// 分组散点图
+scatter price weight if foreign == 0 || scatter price weight if foreign == 1, ///
+    legend(label(1 "Domestic") label(2 "Foreign")) name(grouped1)</code></pre>
+
+                        <h3>其他图表</h3>
+                        <pre><code>// 条形图
+graph bar (mean) price, over(foreign)
+
+// 饼图
+graph pie, over(foreign)
+
+// 时间序列图
+tsline price weight</code></pre>
+                    </section>
+
+                    <section id="best-practices" class="section">
+                        <h2>最佳实践</h2>
+
+                        <ol>
+                            <li><strong>先探索数据</strong>：在进行复杂分析前先了解数据</li>
+                            <li><strong>图表配合</strong>：结合数值指标和图表进行说明</li>
+                            <li><strong>分组分析</strong>：按重要变量分组比较统计量</li>
+                            <li><strong>检查异常值</strong>：识别可能影响结果的极端值</li>
+                            <li><strong>完整报告</strong>：包含中心趋势、离散程度和分布形态</li>
+                        </ol>
+
+                        <div class="card">
+                            <h3>描述性统计报告示例</h3>
+                            <pre><code>// 加载数据
+sysuse auto, clear
+
+// 创建统计报告
+estpost summarize price weight length
+
+// 导出为表格
+esttab using "descriptive-stats.tex", replace ///
+    cells("mean sd p50 min max count") ///
+    stats(N, fmt(%9.0g) labels("Observations"))</code></pre>
+                        </div>
+                    </section>
+
+                    <section class="section">
+                        <h2>相关链接</h2>
+                        <div class="grid grid-2">
+                            <div class="nav-card">
+                                <h3>相关概念</h3>
+                                <ul>
+                                    <li><a href="concept-page-stata-basics.html">Stata基础</a></li>
+                                    <li><a href="concept-page-data-management.html">数据管理</a></li>
+                                    <li><a href="summary-descriptive-stats.html">描述性统计专题</a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-card">
+                                <h3>参考来源</h3>
+                                <ul>
+                                    <li><a href="raw-content-2-data.html">2-data/descriptive-statistics</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据管理 - AI+Stata3.0中文知识库</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">📚</div>
+            <span>AI+Stata3.0中文知识库</span>
+        </a>
+        <nav class="main-nav">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">首页</a>
+            </div>
+            <div class="nav-item">
+                <a href="concepts.html" class="nav-link active">概念词条</a>
+                <div class="dropdown-menu">
+                    <a href="concept-page-stata-basics.html" class="dropdown-item">Stata基础</a>
+                    <a href="concept-page-data-management.html" class="dropdown-item">数据管理</a>
+                    <a href="concept-page-descriptive-stats.html" class="dropdown-item">描述性统计</a>
+                    <a href="concept-page-linear-regression.html" class="dropdown-item">线性回归</a>
+                    <a href="concept-page-panel-data.html" class="dropdown-item">面板数据分析</a>
+                    <a href="concept-page-did.html" class="dropdown-item">双重差分法</a>
+                    <a href="concept-page-psm.html" class="dropdown-item">倾向得分匹配</a>
+                    <a href="concept-page-rdd.html" class="dropdown-item">断点回归设计</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="summaries.html" class="nav-link">专题总览</a>
+                <div class="dropdown-menu">
+                    <a href="summary-stata-intro.html" class="dropdown-item">Stata简介</a>
+                    <a href="summary-data-management.html" class="dropdown-item">数据管理</a>
+                    <a href="summary-descriptive-stats.html" class="dropdown-item">描述性统计</a>
+                    <a href="summary-linear-regression.html" class="dropdown-item">线性回归</a>
+                    <a href="summary-panel-data.html" class="dropdown-item">面板数据分析</a>
+                    <a href="summary-causal-inference.html" class="dropdown-item">因果推断方法</a>
+                    <a href="summary-programming.html" class="dropdown-item">Stata编程基础</a>
+                    <a href="summary-tables-reporting.html" class="dropdown-item">表格与报告</a>
+                    <a href="summary-machine-learning.html" class="dropdown-item">机器学习</a>
+                    <a href="summary-time-series.html" class="dropdown-item">时间序列分析</a>
+                    <a href="summary-spatial-analysis.html" class="dropdown-item">空间分析</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="raw.html" class="nav-link">原始文档</a>
+                <div class="dropdown-menu">
+                    <a href="raw-content-1-intro.html" class="dropdown-item">1-intro - Stata简介</a>
+                    <a href="raw-content-2-data.html" class="dropdown-item">2-data - 数据管理</a>
+                    <a href="raw-content-6-ols.html" class="dropdown-item">6-ols - 线性回归</a>
+                    <a href="raw-content-9-time.html" class="dropdown-item">9-time - 时间序列</a>
+                    <a href="raw-content-10-panel.html" class="dropdown-item">10-panel - 面板数据</a>
+                    <a href="raw-content-12-scm.html" class="dropdown-item">12-scm - 合成控制法</a>
+                    <a href="raw-content-13-psm.html" class="dropdown-item">13-psm - 倾向匹配得分</a>
+                    <a href="raw-content-16-rd.html" class="dropdown-item">16-rd - 断点回归</a>
+                    <a href="raw-content-17-did.html" class="dropdown-item">17-did - 双重差分</a>
+                    <a href="raw-content-18-sp.html" class="dropdown-item">18-sp - 空间分析</a>
+                    <a href="raw-content-29-ml.html" class="dropdown-item">29-ml - 机器学习</a>
+                    <a href="raw-content-3-prog.html" class="dropdown-item">3-prog - 编程基础</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="about.html" class="nav-link">关于</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>概念词条</h2>
+                <p>数据管理</p>
+            </div>
+
+            <div class="sidebar-content">
+                <div class="nav-section">
+                    <h3>目录</h3>
+                    <ul>
+                        <li><a href="#overview">概述</a></li>
+                        <li><a href="#import-export">数据导入导出</a></li>
+                        <li><a href="#variable-manage">变量管理</a></li>
+                        <li><a href="#data-manipulation">数据操作</a></li>
+                        <li><a href="#merge-append">合并与追加</a></li>
+                        <li><a href="#best-practices">最佳实践</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>相关概念</h3>
+                    <ul>
+                        <li><a href="concept-page-stata-basics.html">Stata基础</a></li>
+                        <li><a href="concept-page-descriptive-stats.html">描述性统计</a></li>
+                        <li><a href="summary-data-management.html">数据管理专题</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>参考文档</h3>
+                    <ul>
+                        <li><a href="raw-content-2-data.html">2-data - 数据管理</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <p>最后更新: 2026-04-13</p>
+                <p class="version">AI+Stata3.0 中文知识库</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="page">
+                <div class="page-header">
+                    <h1>数据管理</h1>
+                    <div class="page-meta">
+                        <div class="page-meta-item">
+                            <span>🏷️</span>
+                            <span>数据操作 · 基础</span>
+                        </div>
+                        <div class="page-meta-item">
+                            <span>📖</span>
+                            <span>学习时间: 1-2天</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <section id="overview" class="section">
+                        <h2>概述</h2>
+                        <p>数据管理是Stata的核心功能之一。有效的数据管理包括数据导入导出、变量操作、数据清洗、数据合并等。</p>
+
+                        <div class="card">
+                            <h3>数据管理的重要性</h3>
+                            <ul>
+                                <li>确保数据质量</li>
+                                <li>提高分析效率</li>
+                                <li>保证结果可重复性</li>
+                                <li>便于数据共享</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="import-export" class="section">
+                        <h2>数据导入导出</h2>
+
+                        <h3>导入数据</h3>
+                        <pre><code>// Excel文件
+import excel "data.xlsx", firstrow sheet("Sheet1") clear
+
+// CSV文件
+import delimited "data.csv", clear delimiter(",")
+
+// Stata格式
+use "data.dta", clear
+
+// 固定格式文本
+infix str id 1-5 age 6-7 income 8-15 using "data.txt"</code></pre>
+
+                        <h3>导出数据</h3>
+                        <pre><code>// 保存为Stata格式
+save "mydata.dta", replace
+
+// 导出为Excel
+export excel "results.xlsx", replace firstrow
+
+// 导出为CSV
+export delimited "results.csv", replace</code></pre>
+                    </section>
+
+                    <section id="variable-manage" class="section">
+                        <h2>变量管理</h2>
+
+                        <h3>变量类型</h3>
+                        <pre><code>// 字符串变量
+str20 name  // 20字符的字符串
+
+// 数值变量
+byte age     // 小整数
+int income   // 中等整数
+long id      // 大整数
+float price  // 单精度浮点数
+double wage  // 双精度浮点数</code></pre>
+
+                        <h3>变量操作</h3>
+                        <pre><code>// 创建变量
+gen log_price = log(price)
+gen age_sq = age^2
+
+// 条件生成
+gen high_income = (income > 50000) if !missing(income)
+
+// 重命名
+rename oldvar newvar
+
+// 删除变量
+drop var1 var2
+
+// 保留变量
+keep var3 var4
+
+// 添加标签
+label variable price "商品价格"
+label define highlow 0 "Low" 1 "High"
+label values high_income highlow</code></pre>
+                    </section>
+
+                    <section id="data-manipulation" class="section">
+                        <h2>数据操作</h2>
+
+                        <h3>egen函数</h3>
+                        <pre><code>// 分组统计
+bysort group: egen mean_income = mean(income)
+bysort group: egen median_income = median(income)
+bysort group: egen sd_income = sd(income)
+
+// 其他egen函数
+egen total_income = total(income)
+egen max_income = max(income)
+egen min_income = min(income)
+egen count_income = count(income)</code></pre>
+
+                        <h3>数据排序</h3>
+                        <pre><code>// 排序
+sort age income
+
+// 分组排序
+bysort group (age): keep if _n == 1
+
+// 降序排序
+gsort -income</code></pre>
+                    </section>
+
+                    <section id="merge-append" class="section">
+                        <h2>合并与追加</h2>
+
+                        <h3>追加数据</h3>
+                        <pre><code>// 添加观测值
+use "data1.dta", clear
+append using "data2.dta"
+append using "data3.dta"</code></pre>
+
+                        <h3>合并数据</h3>
+                        <pre><code>// 一对一合并
+use "master.dta", clear
+merge 1:1 id using "using.dta"
+
+// 一对多合并
+merge m:1 group_id using "group_data.dta"
+
+// 多对一合并
+merge 1:m household_id using "member_data.dta"
+
+// 处理匹配结果
+tabulate _merge
+keep if _merge == 3  // 仅保留匹配成功的
+drop _merge</code></pre>
+
+                        <h3>数据重塑</h3>
+                        <pre><code>// 宽转长
+reshape long income expenditure, i(id) j(year)
+
+// 长转宽
+reshape wide income expenditure, i(id) j(year)</code></pre>
+                    </section>
+
+                    <section id="best-practices" class="section">
+                        <h2>最佳实践</h2>
+
+                        <ol>
+                            <li><strong>备份原始数据</strong>：永远不直接修改原始数据</li>
+                            <li><strong>使用描述性变量名</strong>：避免x1、x2等不明确的名称</li>
+                            <li><strong>添加变量标签</strong>：清楚说明变量含义</li>
+                            <li><strong>检查缺失值</strong>：了解缺失值的模式和原因</li>
+                            <li><strong>保留数据操作日志</strong>：记录所有数据处理步骤</li>
+                            <li><strong>定期保存中间结果</strong>：防止工作丢失</li>
+                        </ol>
+                    </section>
+
+                    <section class="section">
+                        <h2>相关链接</h2>
+                        <div class="grid grid-2">
+                            <div class="nav-card">
+                                <h3>相关概念</h3>
+                                <ul>
+                                    <li><a href="concept-page-stata-basics.html">Stata基础</a></li>
+                                    <li><a href="concept-page-descriptive-stats.html">描述性统计</a></li>
+                                    <li><a href="summary-data-management.html">数据管理专题</a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-card">
+                                <h3>参考来源</h3>
+                                <ul>
+                                    <li><a href="raw-content-2-data.html">2-data - 数据管理</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

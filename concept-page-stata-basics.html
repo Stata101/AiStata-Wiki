@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stata基础 - AI+Stata3.0中文知识库</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 头部导航栏 -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">📚</div>
+            <span>AI+Stata3.0中文知识库</span>
+        </a>
+        <nav class="main-nav">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">首页</a>
+            </div>
+            <div class="nav-item">
+                <a href="concepts.html" class="nav-link active">概念词条</a>
+                <div class="dropdown-menu">
+                    <a href="concept-page-stata-basics.html" class="dropdown-item">Stata基础</a>
+                    <a href="concept-page-data-management.html" class="dropdown-item">数据管理</a>
+                    <a href="concept-page-descriptive-stats.html" class="dropdown-item">描述性统计</a>
+                    <a href="concept-page-linear-regression.html" class="dropdown-item">线性回归</a>
+                    <a href="concept-page-panel-data.html" class="dropdown-item">面板数据分析</a>
+                    <a href="concept-page-did.html" class="dropdown-item">双重差分法</a>
+                    <a href="concept-page-psm.html" class="dropdown-item">倾向得分匹配</a>
+                    <a href="concept-page-rdd.html" class="dropdown-item">断点回归设计</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="summaries.html" class="nav-link">专题总览</a>
+                <div class="dropdown-menu">
+                    <a href="summary-stata-intro.html" class="dropdown-item">Stata简介</a>
+                    <a href="summary-data-management.html" class="dropdown-item">数据管理</a>
+                    <a href="summary-descriptive-stats.html" class="dropdown-item">描述性统计</a>
+                    <a href="summary-linear-regression.html" class="dropdown-item">线性回归</a>
+                    <a href="summary-panel-data.html" class="dropdown-item">面板数据分析</a>
+                    <a href="summary-causal-inference.html" class="dropdown-item">因果推断方法</a>
+                    <a href="summary-programming.html" class="dropdown-item">Stata编程基础</a>
+                    <a href="summary-tables-reporting.html" class="dropdown-item">表格与报告</a>
+                    <a href="summary-machine-learning.html" class="dropdown-item">机器学习</a>
+                    <a href="summary-time-series.html" class="dropdown-item">时间序列分析</a>
+                    <a href="summary-spatial-analysis.html" class="dropdown-item">空间分析</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="raw.html" class="nav-link">原始文档</a>
+                <div class="dropdown-menu">
+                    <a href="raw-content-1-intro.html" class="dropdown-item">1-intro - Stata简介</a>
+                    <a href="raw-content-2-data.html" class="dropdown-item">2-data - 数据管理</a>
+                    <a href="raw-content-6-ols.html" class="dropdown-item">6-ols - 线性回归</a>
+                    <a href="raw-content-9-time.html" class="dropdown-item">9-time - 时间序列</a>
+                    <a href="raw-content-10-panel.html" class="dropdown-item">10-panel - 面板数据</a>
+                    <a href="raw-content-12-scm.html" class="dropdown-item">12-scm - 合成控制法</a>
+                    <a href="raw-content-13-psm.html" class="dropdown-item">13-psm - 倾向匹配得分</a>
+                    <a href="raw-content-16-rd.html" class="dropdown-item">16-rd - 断点回归</a>
+                    <a href="raw-content-17-did.html" class="dropdown-item">17-did - 双重差分</a>
+                    <a href="raw-content-18-sp.html" class="dropdown-item">18-sp - 空间分析</a>
+                    <a href="raw-content-29-ml.html" class="dropdown-item">29-ml - 机器学习</a>
+                    <a href="raw-content-3-prog.html" class="dropdown-item">3-prog - 编程基础</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="about.html" class="nav-link">关于</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <div class="app-container">
+        <!-- 侧边栏导航 -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>概念词条</h2>
+                <p>Stata基础</p>
+            </div>
+
+            <div class="sidebar-content">
+                <div class="nav-section">
+                    <h3>目录</h3>
+                    <ul>
+                        <li><a href="#overview">概述</a></li>
+                        <li><a href="#interface">Stata界面</a></li>
+                        <li><a href="#command-syntax">命令语法</a></li>
+                        <li><a href="#data-handling">数据处理</a></li>
+                        <li><a href="#basic-commands">常用命令</a></li>
+                        <li><a href="#best-practices">最佳实践</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>相关概念</h3>
+                    <ul>
+                        <li><a href="concept-page-data-management.html">数据管理</a></li>
+                        <li><a href="concept-page-descriptive-stats.html">描述性统计</a></li>
+                        <li><a href="summary-stata-intro.html">Stata简介专题</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>参考文档</h3>
+                    <ul>
+                        <li><a href="raw-content-1-intro.html">1-intro/basics-getting-started</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <p>最后更新: 2026-04-13</p>
+                <p class="version">AI+Stata3.0 中文知识库</p>
+            </div>
+        </aside>
+
+        <!-- 主内容 -->
+        <main class="main-content">
+            <div class="page">
+                <div class="page-header">
+                    <h1>Stata基础</h1>
+                    <div class="page-meta">
+                        <div class="page-meta-item">
+                            <span>🏷️</span>
+                            <span>基础 · 入门</span>
+                        </div>
+                        <div class="page-meta-item">
+                            <span>📖</span>
+                            <span>学习时间: 1-2天</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <section id="overview" class="section">
+                        <h2>概述</h2>
+                        <p>Stata是一款强大的统计分析软件，广泛应用于经济、金融、社会科学等领域。它提供了数据管理、统计分析、图表可视化等功能。</p>
+
+                        <div class="card">
+                            <h3>核心特点</h3>
+                            <ul>
+                                <li><strong>命令驱动</strong>：使用命令行语法</li>
+                                <li><strong>数据处理</strong>：强大的数据管理能力</li>
+                                <li><strong>统计分析</strong>：涵盖多种统计方法</li>
+                                <li><strong>可扩展性</strong>：支持用户编写程序</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="interface" class="section">
+                        <h2>Stata界面</h2>
+
+                        <h3>主要窗口</h3>
+                        <ul>
+                            <li><strong>命令窗口</strong>：输入Stata命令</li>
+                            <li><strong>结果窗口</strong>：显示命令执行结果</li>
+                            <li><strong>变量窗口</strong>：显示数据集中的变量</li>
+                            <li><strong>数据编辑器</strong>：查看和编辑数据</li>
+                            <li><strong>图形窗口</strong>：显示绘制的图表</li>
+                            <li><strong>历史窗口</strong>：显示之前执行的命令</li>
+                        </ul>
+
+                        <div class="card">
+                            <h3>工作流程</h3>
+                            <ol>
+                                <li>打开或导入数据</li>
+                                <li>查看和检查数据</li>
+                                <li>进行数据处理</li>
+                                <li>运行统计分析</li>
+                                <li>保存和导出结果</li>
+                            </ol>
+                        </div>
+                    </section>
+
+                    <section id="command-syntax" class="section">
+                        <h2>命令语法</h2>
+
+                        <h3>基本语法</h3>
+                        <pre><code>// 基本命令结构
+[命令] [变量名列表] [, 选项]
+
+// 示例
+summarize price weight length
+
+// 带选项的命令
+summarize price, detail
+histogram price, bin(20) frequency</code></pre>
+
+                        <h3>常用命令前缀</h3>
+                        <pre><code>// 命令前缀
+bysort group: summarize price  // 分组汇总
+levelsof variable, local(levels)  // 提取变量值到局部宏
+
+// 全局和局部宏
+global path "C:/data"
+local filename "analysis"
+
+// 循环
+foreach var in price weight length {
+    summarize `var'
+}
+
+forvalues i = 1/5 {
+    display "Value: `i'"
+}</code></pre>
+                    </section>
+
+                    <section id="data-handling" class="section">
+                        <h2>数据处理</h2>
+
+                        <h3>数据导入</h3>
+                        <pre><code>// Excel文件
+import excel "data.xlsx", firstrow clear
+
+// CSV文件
+import delimited "data.csv", clear
+
+// Stata格式
+use "data.dta", clear</code></pre>
+
+                        <h3>数据导出</h3>
+                        <pre><code>// 保存为Stata格式
+save "mydata.dta", replace
+
+// 导出为Excel
+export excel "results.xlsx", replace
+
+// 导出为CSV
+export delimited "results.csv", replace</code></pre>
+
+                        <h3>数据查看</h3>
+                        <pre><code>// 查看数据信息
+describe
+codebook
+
+// 显示数据
+list in 1/5
+browse
+
+// 查看变量标签
+label list</code></pre>
+                    </section>
+
+                    <section id="basic-commands" class="section">
+                        <h2>常用命令</h2>
+
+                        <h3>数据管理</h3>
+                        <pre><code>// 生成新变量
+gen log_price = log(price)
+
+// 条件生成
+gen high_price = (price > 10000) if !missing(price)
+
+// 重命名变量
+rename oldname newname
+
+// 删除变量
+drop variable_name
+
+// 保留变量
+keep variable1 variable2</code></pre>
+
+                        <h3>统计分析</h3>
+                        <pre><code>// 描述性统计
+summarize price weight
+tabulate foreign
+correlate price weight length
+
+// 图形绘制
+histogram price
+scatter price weight
+graph box price, over(foreign)</code></pre>
+                    </section>
+
+                    <section id="best-practices" class="section">
+                        <h2>最佳实践</h2>
+
+                        <ol>
+                            <li><strong>使用do文件</strong>：编写可重复的分析脚本</li>
+                            <li><strong>设置工作目录</strong>：使用明确的文件路径</li>
+                            <li><strong>保存日志</strong>：记录分析过程</li>
+                            <li><strong>注释代码</strong>：提高可读性</li>
+                            <li><strong>定期保存</strong>：防止数据丢失</li>
+                            <li><strong>测试小样本</strong>：调试代码时使用小数据集</li>
+                        </ol>
+
+                        <div class="card">
+                            <h3>do文件模板</h3>
+                            <pre><code>// Stata分析脚本模板
+
+// 设置工作目录
+cd "C:/path/to/project"
+
+// 设置日志文件
+log using "analysis.log", replace
+
+// 清除内存
+clear all
+set more off
+
+// 加载数据
+use "data.dta", clear
+
+// 数据处理
+* 你的数据处理代码
+
+// 统计分析
+* 你的分析代码
+
+// 保存结果
+esttab using "results.tex", replace
+
+// 关闭日志
+log close
+
+// 退出Stata
+exit</code></pre>
+                        </div>
+                    </section>
+
+                    <section class="section">
+                        <h2>相关链接</h2>
+                        <div class="grid grid-2">
+                            <div class="nav-card">
+                                <h3>相关概念</h3>
+                                <ul>
+                                    <li><a href="concept-page-data-management.html">数据管理</a></li>
+                                    <li><a href="concept-page-descriptive-stats.html">描述性统计</a></li>
+                                    <li><a href="summary-stata-intro.html">Stata简介专题</a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-card">
+                                <h3>参考来源</h3>
+                                <ul>
+                                    <li><a href="raw-content-1-intro.html">1-intro/basics-getting-started</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
